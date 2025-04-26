@@ -60,6 +60,7 @@ int menu() {
             case 1:
                 printf ("Simular Queima de Combustível – Inicia uma simulação que representa a queima gradual de combustível da nave, reduzindo 50 litros a cada iteração.");
                 queimaRec (1000, 50);
+              
                 break;
 
             case 2:
@@ -138,9 +139,9 @@ int queimaRec (int combustivel, int queima){
   if (combustivel <= 0){
     return 0;
   }   
-    
-    combustivel = combustivel - queima;    
+
     printf("A quantidade de combustivel é: %d\n", combustivel);
+    combustivel = combustivel - queima;    
 
   if(combustivel == 500){
     printf("Quantidade de combustível: %d\n", combustivel);
