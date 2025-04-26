@@ -59,7 +59,7 @@ int menu() {
         {
             case 1:
                 printf ("Simular Queima de Combustível – Inicia uma simulação que representa a queima gradual de combustível da nave, reduzindo 50 litros a cada iteração.");
-                queimar();
+                queimaRec (1000, 50);
                 break;
 
             case 2:
@@ -120,7 +120,7 @@ int queima () {
   }
 
   return 0;
-} 
+}  
 
 int queimar (){
   int combustivel = 1000;
@@ -128,8 +128,28 @@ int queimar (){
 
   printf("A quantidade de combustivel é: %d\n", combustivel);
   
-    while(combustivel > 0){ 
-      combustivel = combustivel - queima;
-      printf("A quantidade de combustivel é: %d\n", combustivel);
+  while(combustivel > 0){ 
+    combustivel = combustivel - queima;
+    printf("A quantidade de combustivel é: %d\n", combustivel);
    }
+}
+
+int queimaRec (int combustivel, int queima){
+  if (combustivel <= 0){
+    return 0;
+  }   
+    
+    combustivel = combustivel - queima;    
+    printf("A quantidade de combustivel é: %d\n", combustivel);
+
+  if(combustivel == 500){
+    printf("Quantidade de combustível: %d\n", combustivel);
+    printf("Atingindo atmosfera superior\n");
+  }
+  if (combustivel == 100){
+    printf("Quantidade de combustível: %d\n", combustivel);
+    printf("Quase em órbita\n");
+  }
+  
+  return queimaRec (combustivel, queima); 
 }
