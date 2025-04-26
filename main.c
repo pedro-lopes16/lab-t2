@@ -29,7 +29,7 @@ int main() {
 
   if (autenticar()) {
     printf("Bem-vindo comandante! Acesso ao menu principal liberado.\n");
-    return (menu)
+    menu();
   }
   else {
     printf("Número máximo de tentativas atingido. Encerrando o sistema.\n");
@@ -53,12 +53,13 @@ int menu() {
         printf("8. Missão Final - Simulação de Decisão\n");
         printf("9. Sair\n");
         printf("Selecione uma opção:\n");
-        scanf ("%d", opcao);
-            
+        scanf ("%d", &opcao);
+
         switch (opcao)
         {
             case 1:
                 printf ("Simular Queima de Combustível – Inicia uma simulação que representa a queima gradual de combustível da nave, reduzindo 50 litros a cada iteração.");
+                queima ();
                 break;
 
             case 2:
@@ -93,12 +94,30 @@ int menu() {
                 printf ("Sair – Finaliza o programa.");
                 return 0;
         }
-   
-    } while (opcao <= 8); 
 
-    if (opcao > 8)
-    {
-        printf("opção inválida");
-    }
-    
+    } while (opcao != 9);
+    printf("Opção inválida. Tente novamente.\n");
+    return 0;
+
 }
+
+int queima () {
+  int combustivel = 1000; 
+  int queima = 50;
+
+  for(int i=0; i < 20; i++){
+    printf("Combustível restante: %d\n", combustivel);
+    combustivel = combustivel - 50;
+
+    if(combustivel == 500){
+      printf("Quantidade de combustível: %d\n", combustivel);
+      printf("Atingindo atmosfera superior\n");
+    }
+    if (combustivel == 100){
+    printf("Quantidade de combustível: %d\n", combustivel);
+    printf("Quase em órbita\n");
+    }
+  }
+
+  return 0;
+}  
