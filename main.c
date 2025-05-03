@@ -58,37 +58,42 @@ int menu() {
         switch (opcao)
         {
             case 1:
-                printf ("Simular Queima de Combustível – Inicia uma simulação que representa a queima gradual de combustível da nave, reduzindo 50 litros a cada iteração.");
+                printf ("Simular Queima de Combustível – Inicia uma simulação que representa a queima gradual de combustível da nave, reduzindo 50 litros a cada iteração.\n");
                 queimaRec (1000, 50);
               
                 break;
 
             case 2:
-                printf ("Calcular Ângulo de Trajetória – Permite ao usuário inserir uma distância até o destino e recebe como retorno o ângulo ideal para o lançamento");
-                break;
+                printf ("Calcular Ângulo de Trajetória – Permite ao usuário inserir uma distância até o destino e recebe como retorno o ângulo ideal para o lançamento\n");
+                int distancia;
+                printf("Insira a distância em 1000/km:\n");
+                scanf("%d", &distancia);
+                trajetoria(distancia);
+                
+              break;
 
             case 3:
-                printf ("Calcular Gravidade em Planeta – Permite escolher um planeta e retorna a gravidade correspondente, com recomendações baseadas no valor.");
+                printf ("Calcular Gravidade em Planeta – Permite escolher um planeta e retorna a gravidade correspondente, com recomendações baseadas no valor.\n");
                 break;
 
             case 4:
-                printf ("Registrar Missão – Coleta dados de uma missão (distância, planeta) e armazena em um vetor de estruturas.");
+                printf ("Registrar Missão – Coleta dados de uma missão (distância, planeta) e armazena em um vetor de estruturas.\n");
                 break;
 
             case 5:
-                printf ("Ver Histórico de Missões – Exibe todas as missões registradas, com detalhes como distância, ângulo, planeta e status.");
+                printf ("Ver Histórico de Missões – Exibe todas as missões registradas, com detalhes como distância, ângulo, planeta e status.\n");
                 break;
 
             case 6:
-                printf ("Calcular Energia para Emergência (Recursivo) – Calcula de forma recursiva a energia necessária para manter n sistemas ativos da nave.");
+                printf ("Calcular Energia para Emergência (Recursivo) – Calcula de forma recursiva a energia necessária para manter n sistemas ativos da nave.\n");
                 break;
 
             case 7:
-                printf ("Ordenar Missões por Distância – Organiza o histórico de missões do menor para o maior valor de distância usando ordenação simples.");
+                printf ("Ordenar Missões por Distância – Organiza o histórico de missões do menor para o maior valor de distância usando ordenação simples.\n");
                 break;
 
             case 8:
-                printf ("Missão Final - Simulação de Decisão – Apresenta um cenário de crise onde o usuário deve escolher entre três ações que afetam o resultado da missão.");
+                printf ("Missão Final - Simulação de Decisão – Apresenta um cenário de crise onde o usuário deve escolher entre três ações que afetam o resultado da missão.\n");
                 break;
 
             case 9:
@@ -153,4 +158,34 @@ int queimaRec (int combustivel, int queima){
   }
   
   return queimaRec (combustivel, queima); 
+}
+
+/*int trajetoria (int distancia, int angulo){
+  printf("Insira a distância em KM:\n"); 
+  scanf("%d", distancia);
+
+  if (distancia <= 0){
+    printf("Distância inválida");
+    return 0;
+  }
+
+  else{
+    angulo = distancia*0.24+18;
+    printf("Ângulo ideal de lançamento:%d", &angulo);
+  }
+
+  return 0;
+}
+*/
+
+int trajetoria (int distancia){ 
+  int angulo;
+  
+  distancia = distancia*1000;
+
+  angulo = distancia * 0.42 + 18;
+
+  printf("Ângulo ideal de lançamento: %d\n", angulo);
+
+  return 0;
 }
